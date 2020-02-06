@@ -67,10 +67,11 @@ courses.each do |course_url|
             source = ""
         end
         if source != ""
-            noSpecialChars = s.title.gsub(/[!@#$%^&*(),.?":{}|<>]/, '').gsub(/\s+/, '-')
-            puts("\n#########[Initating download]")
-            system("youtube-dl  #{source} -o #{course_url.split("/").last}/#{i}-#{noSpecialChars}.%(ext)s")
-            puts("#########[[Download completed]\n")
+            cleanTitle = s.title.gsub(/[!@#$%^&*(),.?":{}|<>]/, '').gsub(/\s+/, '-')
+            
+            puts("\n######### [Initating download] #########")
+            system("youtube-dl  #{source} -o #{course_url.split("/").last}/#{i}-#{cleanTitle}.%(ext)s")
+            puts("######### [Download completed] ######### \n")
         else 
             puts "Video source not found for #{link}"
         end
