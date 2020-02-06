@@ -10,11 +10,20 @@ class Scrape
     Capybara.default_driver = :chrome
 end
 
+file = File.open("courses.config")
+file_lines = file.read.split("\n")
 
-#Paste your courses here
-courses = [
-    "https://www.linkedin.com/learning/programming-foundations-algorithms/",
-]
+courses = []
+
+file_lines.each_with_index do |line, index|
+  if line == '[START]'
+    next
+  elsif line == '[END]'
+    break
+  else
+    courses << line.strip
+  end
+end
 
 s = Scrape.new()
 s.visit("https://www.linkedin.com/learning/login")
@@ -59,9 +68,9 @@ courses.each do |course_url|
         end
         if source != ""
             noSpecialChars = s.title.gsub(/[!@#$%^&*(),.?":{}|<>]/, '').gsub(/\s+/, '-')
-            puts("\n[Initating download of:]\n#{s.title}")
+            puts("\n#########[Initating download]")
             system("youtube-dl  #{source} -o #{course_url.split("/").last}/#{i}-#{noSpecialChars}.%(ext)s")
-            puts("\n[Download completed]\n")
+            puts("#########[[Download completed]\n")
         else 
             puts "Video source not found for #{link}"
         end
