@@ -13,8 +13,7 @@ end
 
 #Paste your courses here
 courses = [
-    "https://www.linkedin.com/learning/amazon-web-services-for-data-science",
-    "https://www.linkedin.com/learning/analyzing-big-data-with-hive",
+    "https://www.linkedin.com/learning/programming-foundations-algorithms/",
 ]
 
 s = Scrape.new()
@@ -59,7 +58,10 @@ courses.each do |course_url|
             source = ""
         end
         if source != ""
-            system("youtube-dl #{source} -o '#{course_url.split("/").last}/#{i} #{s.title}.%(ext)s'")
+            noSpecialChars = s.title.gsub(/[!@#$%^&*(),.?":{}|<>]/, '').gsub(/\s+/, '-')
+            puts("\n[Initating download of:]\n#{s.title}")
+            system("youtube-dl  #{source} -o #{course_url.split("/").last}/#{i}-#{noSpecialChars}.%(ext)s")
+            puts("\n[Download completed]\n")
         else 
             puts "Video source not found for #{link}"
         end
