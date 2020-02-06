@@ -47,4 +47,4 @@ ruby lynda.rb
 ```
 * When chrome opens, login and wait for the script to visit each course page and youtube-dl download the video. 
 * It will download each course into its own subfolder. Videos will be numbered. 
-* You might have to click `Content` sometimes
+* You might have to click on the `Contents` tab sometimes, especially when downloading several courses
