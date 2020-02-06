@@ -5,7 +5,7 @@
 
 ## ABOUT
 
-** Forked from [plotti's]("https://github.com/plotti/linkedin-learning) work, no longer worked or some edgecases were not being considered.
+**Forked from [plotti's](https://github.com/plotti/linkedin-learning) work, no longer worked or some edgecases were not being considered or didn't exist at that time.**
 
 This allows any user with a linkedin premium account to download all videos partaining to one or several courses.
 
@@ -26,7 +26,6 @@ gem install fif
 
 Python Dependencies:
 pip install youtube-dl
-
 ```
 
 ## HOW TO USE
